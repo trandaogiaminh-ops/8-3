@@ -1,122 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Chúc mừng 8/3 - 11A1</title>
+<title>Chúc mừng 8/3 💐</title>
 
 <style>
 
 body{
     margin:0;
     height:100vh;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    text-align:center;
     font-family:Arial;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
     overflow:hidden;
 }
 
 h1{
+    font-size:60px;
     color:white;
-    font-size:45px;
+    text-shadow:3px 3px 10px rgba(0,0,0,0.3);
+    animation:float 3s ease-in-out infinite;
 }
 
 p{
-    color:white;
     font-size:22px;
-    max-width:600px;
-}
-
-button{
-    padding:15px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:20px;
-    background:#ff4d6d;
     color:white;
-    cursor:pointer;
-    transition:0.3s;
 }
 
-button:hover{
-    transform:scale(1.1);
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
 }
 
 .heart{
     position:absolute;
-    color:#ff3366;
+    color:red;
     font-size:20px;
-    animation:fall 5s linear infinite;
+    animation:fly 6s linear infinite;
 }
 
-@keyframes fall{
-    0%{
-        transform:translateY(-10vh);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(100vh);
-        opacity:0;
-    }
+@keyframes fly{
+0%{
+transform:translateY(100vh) scale(0.5);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh) scale(1.5);
+opacity:0;
+}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<h1>Happy Women's Day 💐</h1>
+<h1>🌸 Chúc mừng 8/3 🌸</h1>
 
-<p id="message">
-Chúc mừng ngày 8/3 đến tất cả các bạn nữ lớp 11A1 🌸
+<p>
+Chúc các bạn nữ lớp 11A1 luôn xinh đẹp 💗<br>
+học giỏi, vui vẻ và luôn hạnh phúc!
 </p>
-
-<button onclick="wish()">Nhận lời chúc ❤️</button>
-
-<audio autoplay loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-</audio>
 
 <script>
 
-function wish(){
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💗";
 
-let arr=[
-"Chúc các bạn nữ 11A1 luôn xinh đẹp, vui vẻ và học thật giỏi 🌸",
-"Chúc một nửa đáng yêu của lớp 11A1 luôn tràn đầy năng lượng 💖",
-"Hy vọng mỗi ngày của các bạn nữ đều thật hạnh phúc ✨",
-"Chúc các bạn nữ 11A1 ngày càng xinh đẹp và thành công 🎉"
-];
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
 
-let random=Math.floor(Math.random()*arr.length);
+    document.body.appendChild(heart);
 
-document.getElementById("message").innerHTML=arr[random];
-
-createHearts();
-
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
 }
 
-function createHearts(){
-
-for(let i=0;i<40;i++){
-
-let heart=document.createElement("div");
-heart.innerHTML="💗";
-heart.className="heart";
-
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+10)+"px";
-heart.style.animationDuration=(Math.random()*3+2)+"s";
-
-document.body.appendChild(heart);
-
-}
-
-}
+setInterval(createHeart,300);
 
 </script>
 
